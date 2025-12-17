@@ -1,6 +1,8 @@
-def main():
-    print("Hello from backend!")
+from fastapi import FastAPI
+from app.core.config import settings
 
+app = FastAPI(title=settings.PROJECT_NAME)
 
-if __name__ == "__main__":
-    main()
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
